@@ -1,0 +1,296 @@
+import java.util.*;
+//Day 1
+/*
+//Assignment 1.............display a table of a particular number      
+public class Table
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Number: ");
+		int num=sc.nextInt();
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println(num+ "*" +i +"=" + num*i);
+		}
+	}
+}
+*/
+/*
+//Assignment 2.....declare two numbers and one operator as a character. e.g. '+'
+using switch... case check which operator is declared and accordingly perform the action.
+
+import java.util.Scanner;
+
+// declare two numbers and one operator as a character. e.g. '+'
+//using switch... case check which operator is declared and accordingly perform the action.
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the first no :");
+        int a = sc.nextInt();
+        System.out.println("enter the second no :");
+        int b = sc.nextInt();
+        System.out.println("enter the operation sub = '-' ; add = ' + ' ; divide = '/' ; mod = '%'   ");
+        char operator=sc.next().charAt(0);
+        switch (operator)
+        {
+            case ('+') :
+                int add=a+b;
+                System.out.println("add = " +add);
+                break;
+            case ( '-'):
+                int sub= a-b;
+                System.out.println("sub = " +sub);
+                break;
+            case ( '/'):
+                int divide = a/b;
+                System.out.println("divide = " +divide);
+                break;
+            case ('%'):
+                int mod= a%b;
+	 System.out.println("mod = " +mod);
+                break;
+	    default:
+		System.out.println("not valid");
+        }
+
+
+        }
+    }
+
+
+/*
+//Assignment 3..............Display numbers  1 to 10 using loop
+public class Table
+{
+	public static void main(String arg[])
+	{
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println(i);
+		}
+	}
+}*/
+/*
+//Assignment 4..............Display numbers from 3 to 30 except number 24  using loop.
+public class Table
+{
+	public static void main(String args[])
+	{
+		int num=3;
+		for(int i=1;i<=10;i++)
+		{
+			int res=num*i;
+			if(res==24)
+				continue;
+			System.out.println(res);
+		}
+	}
+}*/
+
+Q.  Using if…….else if….  Else,  display whether result is  fail, pass, second class , first class, Distinction etc.  
+import java.util.*;
+public class MyClass
+{
+	public static void main(String args[])
+	{
+		int Marks;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Marks: ");
+		Marks=sc.nextInt();
+		if(Marks>75)
+		{
+			System.out.println("Distinction");
+		}
+		else if (Marks<=75 && Marks>=60) 
+		{
+			System.out.println("First Class");
+		}
+		else if (Marks<=60 && Marks>=50) 
+		{
+			System.out.println("Second Class");
+		}
+		else
+		{
+			System.out.println("Fail");
+		}
+	}
+}
+
+Q.6) display all prime numbers between 3 to 30
+public class Main {
+	
+	public static void main(String [] args)
+	
+	{
+		
+		for(int i=3; i<=30;i++)
+		{
+			if(isprime(i))
+			{
+				System.out.print(i+" ");
+			}
+		}
+	}
+
+	static boolean isprime(int num)
+	{
+	//	int cnt=0;
+		
+		
+			for(int j=2; j<num; j++)
+			{
+				if(num%j==0)
+				
+					return false;
+				}
+				
+				return true;
+				
+			}
+	}
+
+
+
+/*
+//Assignment 8
+
+    * 
+   * * 
+  * * * 
+ * * * * 
+* * * * * 
+
+public class Table
+{
+	public static void main(String args[])
+	{
+		int i,j,s;
+		
+		for(i=1;i<=5;i++)
+		{
+			for(s=4;s>=i;s--)
+			{
+				System.out.print(" ");
+			}
+			for(j=1;j<=i;j++)
+			{
+				System.out.print("* ");
+			}
+			System.out.println();
+			
+		}	
+	}
+}
+Q8.
+* * * * 
+  * * * 
+   * * 
+    * 
+public class MyClass
+{
+	public static void main(String args[])
+	{
+		int i,j,s;
+		for(i=1;i<=4;i++)
+		{
+			for(s=1;s<=i;s++)
+			{
+				System.out.print(" ");
+			}
+			for(j=4;j>=i;j--)
+			{
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+	}
+}
+
+*/
+
+
+    * 
+   * * 
+  * * * 
+ * * * * 
+* * * * * 
+ * * * * 
+  * * * 
+   * * 
+    *
+
+  
+Q.8.Diamond pattern................
+
+public class Main
+{
+	public static void main(String args[])
+	{
+		int i,j,s;
+		
+		for(i=1;i<=5;i++)
+		{
+			for(s=4;s>=i;s--)
+			{
+				System.out.print(" ");
+			}
+			for(j=1;j<=i;j++)
+			{
+				System.out.print("* ");
+			}
+			System.out.println();
+		}	
+		for(i=1;i<=4;i++)
+		{
+			for(s=1;s<=i;s++)
+			{
+				System.out.print(" ");
+			}
+			for(j=4;j>=i;j--)
+			{
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+	}
+}
+
+
+
+
+Q.7) using nested for loop display following :
+
+A  a
+A  b
+A  c
+
+B  a
+B  b
+B  c
+
+C  a
+C  b
+C  c
+
+
+public class MyClass
+{
+
+	public static void main(String[] args) {
+		
+		char ch='A';
+		for(int i=1;i<=3;i++)
+		{
+			for(char j='a';j<='c';j++)
+			{
+				System.out.print(ch+"  ");
+				System.out.print(j);
+				System.out.println();
+			}
+			System.out.println();
+			ch++;
+		}
+	}
+}
+
