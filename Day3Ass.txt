@@ -1,0 +1,60 @@
+/**
+ * 
+ */
+package DevPack;
+
+/**   Developer...........
+ * 
+ */
+public class MyClass {
+	int num;
+
+	/**
+	 * @return the num which is taken from setNum
+	 */
+	public int getNum() {
+		return num;
+	}
+
+	/**
+	 * @param num the num to set to getNum
+	 */
+	public void setNum(int num) {
+		this.num = num;
+	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "MyClass [num=" + num + "]";
+	}
+
+	public MyClass() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+}
+
+............................................................................................................
+client........
+
+
+package clientPack;
+
+import DevPack.MyClass;
+
+public class Demo {
+
+	public static void main(String[] args) {
+		MyClass m=new MyClass();
+		m.setNum(100);
+		System.out.println(m.getNum());
+	}
+
+}
+
+
+output---->100
+
