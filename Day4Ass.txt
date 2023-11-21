@@ -1,0 +1,594 @@
+/*Q1)	Define 2 classes “First” and “Second” with member variables , 
+member functions and constructors of  your choice. Now define a class “Two” in which define main function .
+ In main function create various instances of First and Second  and call their individual member functions.*/
+
+class First
+{
+	int num1=10;
+	void disp1()
+	{
+		System.out.println(num1);
+	}
+	First()
+	{
+		System.out.println("Inside first no-arg constructor");
+	}
+}
+class Second extends First
+{
+	int num2=20;
+	void disp2()
+	{
+		System.out.println(num2);
+	}
+	Second()
+	{
+		System.out.println("Inside Second no-arg constructor");
+	}
+}
+class Two
+{
+	public static void main(String args[])
+	{
+		Second s=new Second();
+		s.disp1();
+		s.disp2();
+	}
+}
+Output..............
+Inside first no-arg constructor
+Inside Second no-arg constructor
+10
+20
+.............................................................................................................................................................................
+
+/*Q2)	Create a class with static and non-static member variables. Define static and non-static member functions. 
+Create instance of this class and call both static and non-static member functions.*/
+package pack1;
+
+public class My 
+{
+	private int num;
+	private static int snum;
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public static int getSnum() {
+		return snum;
+	}
+	public static void setSnum(int snum) {
+		My.snum = snum;
+	}	
+}
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		My.setSnum(100);
+		System.out.println(My.getSnum());
+		
+		My m=new My();
+		m.setNum(200);
+		System.out.println(m.getNum());
+	}
+}
+
+O/P:
+
+100
+200
+
+*/
+.....................................................................................................................................................................
+
+Q3)	Define a class “Check” in which declare member variables using  different accessibility modifiers 
+i.e.  <default>, private ,public and protected.   Define a function “disp”  which should be public.  Define a class
+ “CheckDemo” in which you will write “main()” function. Create an instance of  the class “Check” and  show how
+ many  variables can be accessed directly and how many indirectly.
+package pack1;
+
+public class Check 
+{
+	int dnum=100;
+	protected int pronum=200;
+	private int prvnum=300;
+	public int pnum=400;
+	
+	
+	public int getDnum() {
+		return dnum;
+	}
+	
+	public int getPronum() {
+		return pronum;
+	}
+	
+	public int getPrvnum() {
+		return prvnum;
+	}
+	
+	public int getPnum() {
+		return pnum;
+	}
+	
+	
+	
+}
+public class CheckDemo 
+{
+
+	public static void main(String[] args) 
+	{
+		Check c = new Check();
+		
+		System.out.println(c.dnum);
+		System.out.println(c.pronum);
+		//System.out.println(c.prvnum);		it is not accessible directly as it has private access specifier
+		System.out.println(c.pnum);
+		
+		System.out.println(c.getPrvnum());
+		
+	}
+
+}
+
+O/P:
+
+100
+200
+400
+300
+........................................................................................................................................
+Q4)	Show the example of single level inheritance with constructor invocation.
+package pack1;
+
+public class One 
+{
+	private int num;
+	private static char ch;
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public static char getCh() {
+		return ch;
+	}
+	public static void setCh(char ch) {
+		One.ch = ch;
+	}
+
+}
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		One o=new One();
+		
+		o.setNum(100);
+		System.out.println(o.getNum());
+		
+		One.setCh('F');
+		System.out.println(One.getCh());
+	}
+}
+O/P:
+
+100
+F
+..................................................................................................................................
+Q5)	Show the example of multi-level inheritance with constructor invocation.
+package pack1;
+
+class Parent 
+{
+	private int num;
+	
+	Parent()
+	{
+		System.out.println("Inside def constr of Parent class");
+	}
+	void disp1()
+	{
+		System.out.println("Inside Disp1 of Parent\t"+num);
+	}
+}
+
+class Child extends Parent
+{
+	private char ch;
+	
+	Child(char ch)
+	{
+		this.ch=ch;
+		System.out.println("Inside param constr of Child class");
+		
+	}
+	void disp2()
+	{
+		System.out.println("Inside Disp2 of Child\t"+ch);
+	}
+}
+
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		Child c=new Child('A');
+		
+		c.disp2();
+		c.disp1();
+	}
+}
+O/P:
+
+Inside def constr of Parent class
+Inside param constr of Child class
+Inside Disp2 of Child	A
+Inside Disp1 of Parent	0
+.................................................................................................................................................
+Q6)	Show the example of hierarchical inheritance with constructor invocation.
+package pack1;
+
+class Parent 
+{
+	private int num;
+	
+	Parent(int num)
+	{
+		this.num = num;
+		System.out.println("Inside param constructor of Parent class\t"+num);
+	}
+	
+	void disp()
+	{
+		System.out.println("Inside disp Method of of Parent class");
+	}
+}
+
+class Child1 extends Parent
+{
+	private int num;
+	
+	Child1()
+	{
+		super(100);
+		System.out.println("Inside def constructor of Child class\t"+num);
+	}
+	void disp1()
+	{
+		System.out.println("Inside disp1 Method of Child1 class");
+	}
+}
+
+
+class Child2 extends Parent
+{
+	private int num;
+	
+	Child2(int num)
+	{
+		super(200);
+		this.num=num;
+		System.out.println("inside def constructor of Child class\t"+num);
+	}
+	void disp2()
+	{
+		System.out.println("Inside disp2 Method of of Child2 class");
+	}
+}
+
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		Child1 c1 = new Child1();
+		
+		c1.disp1();
+		c1.disp();
+	//	c1.disp2();		//this is not possible as there is no relation between child classes of same parent 
+		
+		Child2 c2 = new Child2(500);
+		
+		c2.disp2();
+		c2.disp();
+	//	c2.disp1();		//not possible
+		
+	}
+
+}
+
+O/P:
+
+Inside param constructor of Parent class	100
+Inside def constructor of Child class	0
+Inside disp1 Method of Child1 class
+Inside disp Method of of Parent class
+Inside param constructor of Parent class	200
+inside def constructor of Child class	500
+Inside disp2 Method of of Child2 class
+Inside disp Method of of Parent class
+...................................................................................................................................................................
+
+Q7)	Define a parent and a child class . Now explain function overriding with Example.
+package pack1;
+
+class Parent 
+{
+	private int num;
+	
+	Parent()
+	{
+		System.out.println("Inside def constr of Parent class");
+	}
+	void disp1()		//overridden
+	{
+		System.out.println("Inside Disp1 of Parent\t"+num);
+	}
+}
+
+class Child extends Parent
+{
+	private char ch;
+	
+	Child(char ch)
+	{
+		this.ch=ch;
+		System.out.println("Inside param constr of Child class");
+		
+	}
+	void disp1()		//overriding
+	{
+		System.out.println("Inside Disp1 of Child\t"+ch);
+	}
+}
+
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		Child c=new Child('F');
+		
+		c.disp1();		//late binding...content of c is considered i.e disp1 of Child class
+	}
+}
+
+O/P:
+
+Inside def constr of Parent class
+Inside param constr of Child class
+Inside Disp1 of Child	F
+...........................................................................................................................................................
+
+Q8)	Define a parent class with one function. Define child class with the function having same
+ name as of parent class function, but having different argument.
+Create an instance of child class and call the functions. Make sure u have followed the concept 
+of “function overloading “ in inheritance.
+package pack1;
+
+class Parent 
+{
+	private int num=100;
+	
+	Parent()
+	{
+		System.out.println("Inside def constr of Parent class");
+	}
+	void disp1()		
+	{
+		System.out.println("Inside Disp1 of Parent\t"+num);
+	}
+}
+
+class Child extends Parent
+{
+	private int num;
+	
+	Child(int num)
+	{
+		this.num=num;
+		System.out.println("Inside param constr of Child class");
+		
+	}
+	void disp1(int k)		
+	{
+		
+		System.out.println("Inside Disp1 of Child\t"+k);
+	}
+}
+
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		Child c1=new Child(100);
+		
+		c1.disp1();		//no arg is passed so it will invoke disp1 of Parent class 
+		
+		Child c2=new Child(200);
+		
+		c2.disp1(300);	// arg is passed so it will invoke disp1 of Child class 
+	}
+}
+
+O/P:
+
+Inside def constr of Parent class
+Inside param constr of Child class
+Inside Disp1 of Parent	100
+Inside def constr of Parent class
+Inside param constr of Child class
+Inside Disp1 of Child	300
+
+................................................................................................................................................................................
+
+
+Q9)	Define a class “Shape” with “draw()” function . Now derive  classes like “Circle”, “Polygon”,
+”Rectangle” etc. from “Shape” and override “draw()” function. Define a class “ShapeDemo” in which  write  main()  function.
+ In the main function create a reference to Shape class referring to any of the sub class. Using this reference, call “draw()” and check the result.
+package pack1;
+
+class Shape 
+{
+	 void draw()
+	{
+		System.out.println("Draw required shape");
+	}
+}
+
+class Circle extends Shape
+{
+	void draw()
+	{
+		System.out.println("Draw circle");
+	}
+}
+
+class Polygon extends Shape
+{
+	void draw()
+	{
+		System.out.println("Draw polygon");
+	}
+}
+
+class Rectangle extends Shape
+{
+	void draw()
+	{
+		System.out.println("Draw rectangle");
+	}
+}
+
+class Triangle extends Shape
+{
+	void draw()
+	{
+		System.out.println("Draw triangle");
+	}
+}
+
+public class ShapeDemo {
+
+	public static void main(String[] args) 
+	{
+		Shape sh = new Polygon();
+		
+		sh.draw();
+
+	}
+
+}
+
+O/P:
+
+Draw polygon
+
+...................................................................................................................................................................
+
+
+Q10)	Define an interface “Vechicle” with “start()” function . Now derive  classes like “TwoWheeler”,
+ “ThreeWheeler”,”FourWheeler” etc. from “Vehicle” and override “start()” function. Define a class “VDemo” in which
+  write  main()  function. In the main function create a reference to Vehicle  class referring to any of the sub class. Using this
+ reference, call “start" method.
+package pack1;
+
+class Vehicle 
+{
+	void start()
+	{
+		System.out.println("Start Vehicle");
+	}
+}
+
+class TwoWheeler extends Vehicle
+{
+	void start()
+	{
+		System.out.println("Start Two Wheeler Vehicle");
+	}
+}
+
+class ThreeWheeler extends Vehicle
+{
+	void start()
+	{
+		System.out.println("Start Three Wheeler Vehicle");
+	}
+}
+
+class FourWheeler extends Vehicle
+{
+	void start()
+	{
+		System.out.println("Start Four Wheeler Vehicle");
+	}
+}
+public class VDemo {
+
+	public static void main(String[] args) 
+	{
+		Vehicle v = new FourWheeler();
+		
+		v.start();
+
+	}
+
+}
+
+O/P:
+
+Start Four Wheeler Vehicle
+..................................................................................................................................................................
+Q10....Using Array............
+interface Vehicle
+{
+	void Start();
+}
+class TwoWheeler implements Vehicle
+{
+	public void Start()
+	{
+		System.out.println("Two wheeler Started");
+	}
+}
+class ThreeWheeler implements Vehicle
+{
+	public void Start()
+	{
+		System.out.println("Three wheeler Started");
+	}
+}
+class FourWheeler implements Vehicle
+{
+	public void Start()
+	{
+		System.out.println("Four wheeler Started");
+	}
+}
+public class VDemo {
+
+	public static void main(String[] args) 
+	{
+		Vehicle arr[]=new Vehicle[3];
+		arr[0]=new TwoWheeler();
+		arr[1]=new ThreeWheeler();
+		arr[2]=new FourWheeler();
+		for (int i=0;i<arr.length;i++) 
+		{
+			arr[i].Start();
+		}
+	}
+}
+Output...............
+Two wheeler Started
+Three wheeler Started
+Four wheeler Started
+
+
+
