@@ -1,0 +1,316 @@
+Q1)on developer side:
+
+create interface "Shape" with "void draw();" method.
+
+now define child classes 
+	Triangle,Rect and Circle
+
+create necessary jar file and documentation.
+
+
+on Client side:
+
+define "ShapeDemo" class with main function
+
+create an array of "Shape" with 3 elements. store objects of Triangle,Rect and
+ Circle in this array. now traverse the array and invoke "draw()" of each child.
+Ans--------->
+Develope---->
+package DevPack;
+ interface Shape {
+				void draw();
+}
+ class Triangle implements Shape
+{
+	public void draw()
+	{
+		System.out.println("Drawing tringle...");
+	}
+}
+ class Rect implements Shape
+{
+	public void draw()
+	{
+		System.out.println("Drawing rectangle....");
+	}	
+}
+ class Circle implements Shape
+{
+	public void draw()
+	{
+		System.out.println("Drawing circle....");
+	}
+}
+Client---->
+package DevPack;
+
+public class ShapeDemo {
+
+	public static void main(String[] args) {
+		Shape sh[]=new Shape[3];
+		sh[0]=(Shape) new Triangle();
+		sh[1]=(Shape) new Rect();
+		sh[2]=(Shape) new Circle();
+		for(int i=0;i<sh.length;i++)
+		{
+			sh[i].draw();
+		}
+	}
+
+}
+.............Output.................
+Drawing tringle...
+Drawing rectangle....
+Drawing circle....
+......................................................................................................................
+Q2public interface MouseHandler
+{
+	void mouseClicked();
+	void mousePressed();
+	void mouseReleased();
+}
+public interface WindowHandler
+{
+	void windowClosing();
+	void windowClosed();
+}
+
+public class WindowGUIApp implements MouseHandler,WindowHandler
+{
+}
+public class GUIDemo
+{
+	main()
+	{
+		create the object of WindowGUIApp and invoke all the methods
+	}
+}
+....................>>>
+package PackInter;
+interface MouseHandler
+{
+	void mouseClicked();
+	void mousePressed();
+	void mouseReleased();
+}
+interface WindowHandler
+{
+	void windowClosing();
+	void windowClosed();
+}
+class WindowGUIApp implements MouseHandler,WindowHandler
+{
+	public void mouseClicked()
+	{
+		System.out.println("Mouse clicked");
+	}
+	public void mousePressed()
+	{
+		System.out.println("Mouse button pressed");
+	}
+	public void mouseReleased()
+	{
+		System.out.println("Mouse is Released");
+	}
+	public void windowClosing()
+	{
+		System.out.println("Now window is closing");
+	}
+	public void windowClosed()
+	{
+		System.out.println("window closed");
+	}
+}
+
+public class GUIDemo
+ {
+	public static void main(String[] args) {
+		WindowGUIApp w=new WindowGUIApp();
+		w.mouseClicked();
+		w.mousePressed();
+		w.mouseReleased();
+		w.windowClosing();
+		w.windowClosed();	
+	}
+}
+...................................................................................................................................
+
+Q Interface3
+/**
+ * 
+ */
+package interface3;
+
+
+
+public interface Vehicle 
+{
+	/**
+	 * @param a returns void
+	 */
+	void changeGear(int a); 
+	
+    /**
+     * @param a returns void
+     */
+    void speedUp(int a); 
+    /**
+     * @param a returns void
+     */
+    void applyBrakes(int a); 
+}
+
+package interface3client;
+
+
+import interface3.Vehicle;
+
+
+public class TwoWheeler implements Vehicle
+{
+	int ref;
+	int sp;
+	public void changeGear(int a)
+	{
+		this.ref=a;
+		System.out.println("Gear changed to "+ref);
+	}
+	public void speedUp(int a)
+	{
+		this.sp=a;
+        System.out.println("Speed is "+sp);
+	}
+	public void applyBrakes(int a)
+	{
+		System.out.println("Brakes applied");
+	}
+}
+
+
+package interface3client;
+
+import interface3.Vehicle;
+
+public class FourWheeler implements Vehicle
+{
+	int ref;
+	int sp;
+	public void changeGear(int a)
+	{
+		this.ref=a;
+		System.out.println("Gear changed to "+ref);
+	}
+	public void speedUp(int a)
+	{
+         this.sp=a;
+         System.out.println("Speed is "+sp);
+	}
+	public void applyBrakes(int a)
+	{
+		System.out.println("Brakes applied");
+	}
+}
+
+package interface3client;
+
+import interface3.Vehicle;
+ 
+public class Demo {
+
+	/**
+	 * @param args
+	 * @return 
+	 */
+	static void perform(Vehicle ref)
+	{
+		ref.applyBrakes(3);
+		ref.changeGear(4);
+		ref.speedUp(80);
+	}
+	
+	public static void main(String[] args) 
+	{
+		perform(new TwoWheeler());
+		perform(new FourWheeler());
+
+	}
+
+}
+
+...................................................................................................................................................
+Q Weapon
+package Weaponpack;
+
+	abstract class Weapon
+	{
+		public void attack()
+		{
+		}
+	}
+    class Sword extends Weapon
+	{
+		public void attack()
+		{
+			System.out.println("attack with sword");
+		}
+	}
+   class Bomb extends Weapon
+	{
+		public void attack()
+		{
+			System.out.println("attack with bomb");
+		}
+	}
+	class Gun extends Weapon
+	{
+		public void attack()
+		{
+			System.out.println("attack with Gun");
+		}
+		public void fillBullets()
+		{
+			System.out.println("filling bullets");
+		}
+	}
+
+	class Soldier
+	{
+	
+		public void fight(Weapon ref)
+		{
+			ref.attack();
+			 
+			/*
+			 * Gun ref1 = new Gun(); ref1.fillBullets();
+			 */
+			
+			/*
+			 * Gun ref1 = (Gun)ref; ref1.fillBullets();   //downcasting
+			 */
+			
+			if(ref instanceof Gun)
+			{
+				Gun ref1 = (Gun)ref; 
+				ref1.fillBullets();
+			}	
+		}
+
+	}
+	
+	public class WeaponDemo
+	{
+		public static void main(String args[])
+		{
+			Soldier s1=new Soldier();
+			s1.fight(new Gun());
+			s1.fight(new Sword());
+		}
+	}
+
+.................................................................................................................................................
+
+
+
+
+
+
