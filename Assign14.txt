@@ -1,0 +1,172 @@
+/*
+ * define a functional interface "First" with an abstract method "void disp1()" ,
+ *  default method "void disp2()" and a static method "void disp3()"
+*/
+interface First
+{
+	void disp1();
+	default void disp2()
+	{
+		System.out.println("in disp2");
+	}
+	static void disp3()
+	{
+		System.out.println("in disp3");
+	}
+}
+
+public class LambdaFI
+{
+	public static void main(String[] args)
+	{
+		First f1=()->{System.out.println("In contract method... ");};
+		f1.disp1();
+		f1.disp2();
+		First.disp3();
+	}
+
+}
+Output---->
+In contract method... 
+in disp2
+in disp3
+................................................................................................................................
+
+
+
+/*
+ 2) define a functional interface "Second" with an abstract method "void disp4()".
+
+define a class Demo with main function.
+inside main function create two implementations of "Second" 
+using lambda expression and display their names.
+ */
+interface Second
+{
+	abstract void disp4();
+	
+}
+public class Demo 
+{
+	public static void main(String[] args) 
+	{
+		Second s1=()->{System.out.println("Implimentation 1");};
+		s1.disp4();
+		System.out.println(s1.getClass().getName());
+
+		Second s2=()->{System.out.println("Implimentation 2");};
+		s2.disp4();
+		System.out.println(s2.getClass().getName());
+
+	}
+
+}
+Output----->
+Implimentation 1
+Demo$$Lambda$1/0x0000019bdd000bf8
+Implimentation 2
+Demo$$Lambda$2/0x0000019bdd001000
+..................................................................................................................................
+
+/*Q3) define a functional interface "MyInterface" with an abstract method "void fun()"
+
+define a class Demo with two functions "static void perform" and main.
+
+from main function pass lambda expression, collect it in "perform" method and invoke "fun()" function.
+*/
+interface MyInterface
+{
+	abstract void fun();
+	
+}
+class Demo
+{
+	static void perform(MyInterface ref)
+	{
+		ref.fun();
+	}
+	public static void main(String args[])
+	{
+		perform(()->{System.out.println("Call to fun()...");});
+	}
+}
+Output------>
+Call to function...
+.......................................................................................................................................
+
+/*
+ 4) define a functional interface "Calculator" with an abstract method "int multiply(int a,int b)"
+define a class "CalcDemo" with main method.
+inside main using lambda create an implementation of "Calculator" , 
+invoke "multiply()" method and display its result.
+*/
+interface Calculator
+{
+	int multiply(int a,int b);
+}
+public class CalcDemo
+{
+	public static void main(String args[])
+	{
+		Calculator c=(a,b)->{return (a*b);};
+		System.out.println(c.multiply(10,20));
+	}
+}
+Output--->
+200
+........................................................................................................................................
+
+/*
+ 5) define a class "Display" with "void disp" method. 
+ inside this method display values from 1 to 10.
+ create an implementation of "Runnable" using lambda expression which will invoke "disp()" method of "Display" class.
+
+create 2 threads and pass above created "Runnable" implementation to these threads.
+make sure while one thread is executing other thread will not interfere.
+
+
+*/
+
+public class Display
+{
+	synchronized void display()
+	{
+		for(int i=0;i<10;i++)
+		{
+			System.out.println("i="+i);
+		}
+	}
+	public static void main(String args[])
+	{
+		Display d=new Display();
+		Runnable run=()->{d.display();};
+		
+		Thread Th1=new Thread(run);
+		Thread Th2=new Thread(run);
+		Th1.start();
+		Th2.start();
+	}
+}
+Output----->
+i=0
+i=1
+i=2
+i=3
+i=4
+i=5
+i=6
+i=7
+i=8
+i=9
+i=0
+i=1
+i=2
+i=3
+i=4
+i=5
+i=6
+i=7
+i=8
+i=9
+
+
